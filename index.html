@@ -51,11 +51,8 @@ select {
 }
 
 header {
-  position:sticky;
-  top:0;
-  z-index:20;
-  background:rgba(244,245,247,.96);
-  backdrop-filter:blur(12px);
+  position:static;
+  background:var(--bg);
   border-bottom:1px solid var(--line);
 }
 
@@ -105,11 +102,46 @@ h1 {
   font-size:18px;
 }
 
+.filter-panel {
+  margin-top:10px;
+}
+
+.filter-panel > summary {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  min-height:42px;
+  padding:0 12px;
+  color:var(--accent-dark);
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:10px;
+  font-size:14px;
+  font-weight:800;
+  cursor:pointer;
+  list-style:none;
+}
+
+.filter-panel > summary::-webkit-details-marker {
+  display:none;
+}
+
+.filter-panel > summary::after {
+  content:"▼";
+  margin-left:10px;
+  font-size:12px;
+  transition:transform .18s ease;
+}
+
+.filter-panel[open] > summary::after {
+  transform:rotate(180deg);
+}
+
 .controls {
   display:grid;
   grid-template-columns:minmax(250px,2fr) repeat(4,minmax(135px,1fr));
   gap:8px;
-  margin-top:10px;
+  margin-top:8px;
 }
 
 input,
@@ -428,45 +460,48 @@ footer {
     <h1>ヤフオク 新規入札商品</h1>
 
     <div class="updated">
-      HTML作成日時：2026年08月03日 09:13
+      HTML作成日時：2026年08月03日 17:07
     </div>
 
     <div class="stats" id="stats"></div>
 
-    <div class="controls">
-      <input
-        id="q"
-        class="search"
-        type="search"
-        placeholder="商品名で検索"
-        autocomplete="off"
-      >
+    <details class="filter-panel">
+      <summary>検索・絞り込みを表示</summary>
+      <div class="controls">
+        <input
+          id="q"
+          class="search"
+          type="search"
+          placeholder="商品名で検索"
+          autocomplete="off"
+        >
 
-      <select id="category">
-        <option value="">全カテゴリ</option>
-      </select>
+        <select id="category">
+          <option value="">全カテゴリ</option>
+        </select>
 
-      <select id="minBids">
-        <option value="0">入札件数：すべて</option>
-        <option value="1">1件以上</option>
-        <option value="3">3件以上</option>
-        <option value="5">5件以上</option>
-        <option value="10">10件以上</option>
-      </select>
+        <select id="minBids">
+          <option value="0">入札件数：すべて</option>
+          <option value="1">1件以上</option>
+          <option value="3">3件以上</option>
+          <option value="5">5件以上</option>
+          <option value="10">10件以上</option>
+        </select>
 
-      <select id="shipping">
-        <option value="">送料：すべて</option>
-        <option value="free">送料無料のみ</option>
-        <option value="paid">送料あり・不明</option>
-      </select>
+        <select id="shipping">
+          <option value="">送料：すべて</option>
+          <option value="free">送料無料のみ</option>
+          <option value="paid">送料あり・不明</option>
+        </select>
 
-      <select id="sort">
-        <option value="default">おすすめ順</option>
-        <option value="bidsDesc">入札件数が多い順</option>
-        <option value="priceAsc">価格が安い順</option>
-        <option value="priceDesc">価格が高い順</option>
-      </select>
-    </div>
+        <select id="sort">
+          <option value="default">おすすめ順</option>
+          <option value="bidsDesc">入札件数が多い順</option>
+          <option value="priceAsc">価格が安い順</option>
+          <option value="priceDesc">価格が高い順</option>
+        </select>
+      </div>
+    </details>
   </div>
 </header>
 
