@@ -1,0 +1,1021 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, viewport-fit=cover"
+>
+<meta name="robots" content="noindex, nofollow">
+<title>ヤフオク 新規入札商品</title>
+
+<style>
+:root {
+  --bg:#f4f5f7;
+  --card:#ffffff;
+  --text:#202124;
+  --muted:#6b7280;
+  --line:#dde1e7;
+  --accent:#7b1fa2;
+  --accent-dark:#5b1478;
+  --brand:#175cd3;
+  --ladies:#14804a;
+  --bid:#b42318;
+  --free:#067647;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:smooth;
+}
+
+body {
+  margin:0;
+  color:var(--text);
+  background:var(--bg);
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Noto Sans JP",
+    sans-serif;
+}
+
+button,
+input,
+select {
+  font:inherit;
+}
+
+header {
+  position:static;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+}
+
+.wrap {
+  width:min(1500px,100%);
+  margin:0 auto;
+  padding:14px 14px 30px;
+}
+
+h1 {
+  margin:0;
+  font-size:23px;
+  line-height:1.25;
+}
+
+.updated {
+  margin-top:4px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.stats {
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:12px 0 3px;
+  scrollbar-width:none;
+}
+
+.stats::-webkit-scrollbar {
+  display:none;
+}
+
+.stat {
+  flex:0 0 auto;
+  min-width:104px;
+  padding:9px 11px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  font-size:12px;
+}
+
+.stat b {
+  display:block;
+  margin-top:2px;
+  font-size:18px;
+}
+
+.filter-panel {
+  margin-top:10px;
+}
+
+.filter-panel > summary {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  min-height:42px;
+  padding:0 12px;
+  color:var(--accent-dark);
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:10px;
+  font-size:14px;
+  font-weight:800;
+  cursor:pointer;
+  list-style:none;
+}
+
+.filter-panel > summary::-webkit-details-marker {
+  display:none;
+}
+
+.filter-panel > summary::after {
+  content:"▼";
+  margin-left:10px;
+  font-size:12px;
+  transition:transform .18s ease;
+}
+
+.filter-panel[open] > summary::after {
+  transform:rotate(180deg);
+}
+
+.controls {
+  display:grid;
+  grid-template-columns:minmax(250px,2fr) repeat(4,minmax(135px,1fr));
+  gap:8px;
+  margin-top:8px;
+}
+
+input,
+select {
+  width:100%;
+  min-height:43px;
+  padding:0 11px;
+  color:var(--text);
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:10px;
+  font-size:14px;
+  outline:none;
+}
+
+input:focus,
+select:focus {
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(123,31,162,.12);
+}
+
+main.wrap {
+  padding-top:16px;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(225px,1fr));
+  gap:14px;
+}
+
+.card {
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  overflow:hidden;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 2px 8px rgba(0,0,0,.045);
+}
+
+.image-box {
+  position:relative;
+  aspect-ratio:1 / 1;
+  overflow:hidden;
+  background:#fff;
+}
+
+.image-box img {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  background:#fff;
+}
+
+.image-box img.image-fallback {
+  object-fit:cover;
+}
+
+.badges {
+  position:absolute;
+  top:8px;
+  left:8px;
+  right:8px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:7px;
+}
+
+.badge {
+  display:inline-flex;
+  align-items:center;
+  min-height:26px;
+  padding:5px 8px;
+  color:#fff;
+  border-radius:999px;
+  font-size:10px;
+  line-height:1.1;
+  font-weight:800;
+  box-shadow:0 1px 5px rgba(0,0,0,.2);
+}
+
+.badge.brand {
+  background:var(--brand);
+}
+
+.badge.ladies {
+  background:var(--ladies);
+}
+
+.badge.bid {
+  margin-left:auto;
+  background:var(--bid);
+  font-size:12px;
+}
+
+.card-body {
+  display:flex;
+  flex:1;
+  flex-direction:column;
+  gap:7px;
+  padding:11px;
+}
+
+.title {
+  display:-webkit-box;
+  min-height:57px;
+  overflow:hidden;
+  color:#333;
+  font-size:13px;
+  line-height:1.48;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+}
+
+.info-row {
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:8px;
+  color:var(--muted);
+  font-size:11px;
+}
+
+.price {
+  color:var(--text);
+  font-size:21px;
+  font-weight:900;
+  letter-spacing:-.02em;
+}
+
+.postage {
+  min-height:17px;
+  color:var(--muted);
+  font-size:11px;
+}
+
+.postage.free {
+  color:var(--free);
+  font-weight:800;
+}
+
+.open {
+  display:block;
+  margin-top:auto;
+  padding:10px 8px;
+  color:#fff;
+  background:var(--accent);
+  border-radius:10px;
+  text-align:center;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:800;
+}
+
+.open:hover {
+  background:var(--accent-dark);
+}
+
+.copy-title {
+  width:100%;
+  min-height:36px;
+  padding:8px;
+  color:#5b1478;
+  background:#faf5ff;
+  border:1px solid #d8b4fe;
+  border-radius:10px;
+  font-size:12px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.copy-title:hover {
+  background:#f3e8ff;
+}
+
+.exclude-seller {
+  width:100%;
+  min-height:38px;
+  padding:8px;
+  color:#b42318;
+  background:#fff;
+  border:1px solid #f3b7b2;
+  border-radius:10px;
+  font-size:12px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.exclude-seller:hover {
+  background:#fff1f0;
+}
+
+.exclude-seller:disabled {
+  color:var(--muted);
+  background:#f5f5f5;
+  border-color:var(--line);
+  cursor:not-allowed;
+}
+
+.empty {
+  display:none;
+  padding:60px 12px;
+  color:var(--muted);
+  text-align:center;
+}
+
+footer {
+  padding-top:22px;
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.6;
+  word-break:break-all;
+}
+
+@media (max-width:900px) {
+  .controls {
+    grid-template-columns:1fr 1fr 1fr;
+  }
+
+  .controls .search {
+    grid-column:1 / -1;
+  }
+}
+
+@media (max-width:720px) {
+  .wrap {
+    padding-left:9px;
+    padding-right:9px;
+  }
+
+  h1 {
+    font-size:19px;
+  }
+
+  .updated {
+    font-size:11px;
+  }
+
+  .controls {
+    grid-template-columns:1fr 1fr;
+  }
+
+  .controls .search {
+    grid-column:1 / -1;
+  }
+
+  .grid {
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:5px;
+  }
+
+  .card {
+    border-radius:11px;
+  }
+
+  .card-body {
+    gap:4px;
+    padding:5px;
+  }
+
+  .title {
+    min-height:40px;
+    font-size:9.5px;
+    line-height:1.4;
+  }
+
+  .price {
+    font-size:14px;
+  }
+
+  .info-row,
+  .postage {
+    font-size:8px;
+  }
+
+  .badge {
+    min-height:18px;
+    padding:3px 4px;
+    font-size:7.5px;
+  }
+
+  .badge.bid {
+    font-size:8px;
+  }
+
+  .open {
+    padding:7px 3px;
+    font-size:9px;
+  }
+
+  .copy-title {
+    min-height:28px;
+    padding:5px 3px;
+    border-radius:7px;
+    font-size:8px;
+    line-height:1.2;
+  }
+
+  .exclude-seller {
+    min-height:29px;
+    padding:5px 3px;
+    font-size:8px;
+    line-height:1.25;
+  }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <h1>ヤフオク 新規入札商品</h1>
+
+    <div class="updated">
+      HTML作成日時：2026年08月09日 19:04
+    </div>
+
+    <div class="stats" id="stats"></div>
+
+    <details class="filter-panel">
+      <summary>検索・絞り込みを表示</summary>
+      <div class="controls">
+        <input
+          id="q"
+          class="search"
+          type="search"
+          placeholder="商品名で検索"
+          autocomplete="off"
+        >
+
+        <select id="category">
+          <option value="">全カテゴリ</option>
+        </select>
+
+        <select id="minBids">
+          <option value="0">入札件数：すべて</option>
+          <option value="1">1件以上</option>
+          <option value="3">3件以上</option>
+          <option value="5">5件以上</option>
+          <option value="10">10件以上</option>
+        </select>
+
+        <select id="shipping">
+          <option value="">送料：すべて</option>
+          <option value="free">送料無料のみ</option>
+          <option value="paid">送料あり・不明</option>
+        </select>
+
+        <select id="sort">
+          <option value="default">おすすめ順</option>
+          <option value="bidsDesc">入札件数が多い順</option>
+          <option value="priceAsc">価格が安い順</option>
+          <option value="priceDesc">価格が高い順</option>
+        </select>
+      </div>
+    </details>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="grid" id="grid"></div>
+
+  <div class="empty" id="empty">
+    条件に合う商品がありません。
+  </div>
+
+  <footer>
+    使用ファイル：<span id="sources"></span><br>
+    画像はヤフオクの商品画像URLを表示しています。
+    出品終了・削除後はダミー画像へ自動で切り替わります。
+  </footer>
+</main>
+
+<script>
+const ITEMS = [{"status":"NEW","category":"ブランドレディース","product_id":"v1240194751","seller_id":"DZnV9pMSwyBmhMW9imoYV2F7UhX8o","title":"POLO RALPH LAUREN レディース 半袖 ケーブルニット 赤 ビッグポニー 表記M M相当 美品","price":11,"bids":2,"remaining_time":"6日","postage":230.0,"postage_text":"＋送料230円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/e84ee63c44e2da322d9771ec70ff1c8d6ce1b890a47e0fd403c26550f0543e47/i-img1200x1200-178626237197326hxs9735.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/v1240194751","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"ブランドレディース","product_id":"q1240168357","seller_id":"6HAW9vvYzDXK6zM2PZnp8n9gmyEbV","title":"HYSTERIC GLAMOUR　ヒステリックグラマー　 半袖 Tシャツ 黒　Ｍサイズ","price":500,"bids":1,"remaining_time":"4日","postage":null,"postage_text":"送料未定","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/dfa4dc848295e80ce0fd785c74f010eba3cab7ae21e18b25f26f410f838c5a7e/i-img900x1200-178624781001400grnry34.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/q1240168357","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"ブランドレディース","product_id":"w1238498317","seller_id":"4XNPxBpsEvEDuJxrqcHvJrUaHSwPS","title":"アーバンリサーチ URBAN RESEARCH 華奢見えデザイン☆ ワッフル サーマル ワンピース F","price":1000,"bids":1,"remaining_time":"4時間","postage":750.0,"postage_text":"＋送料750円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0207/user/157ca4b83d7fda0f9465838e06b57a15e16f71cde2517d194c3e5652803adbd5/i-img1150x1150-1785045959347938dqhitj8.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/w1238498317","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"ブランドレディース","product_id":"r1237654239","seller_id":"Axsy6nU9YeiEEW7M7nkLvtXHC5PUx","title":"【送料無料】インゲボルグ ピンクベージュ リネン フレアースカート/フリーサイズ/2021SSコレ/G26A41","price":2990,"bids":1,"remaining_time":"3時間","postage":0.0,"postage_text":"＋送料0円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0207/user/e147370d03af80191891c19e501e0a6b415761a45ca684f7423f77a765a0b135/i-img900x900-17844239914223qurjye499.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/r1237654239","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"ブランドレディース","product_id":"j1141504663","seller_id":"CSoPTbFqEpjVNPUKDmMR9gKc9EBHX","title":"Ralph laulen ラルフ ローレン 　DENIM & SUPPLY デニム & サプライ　インディゴシャンブレー素材パッチワーク　ワークシャツ　サイズ XS","price":5800,"bids":1,"remaining_time":"4時間","postage":600.0,"postage_text":"＋送料600円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0506/users/dfc5266b8c714593cc55acafb62d332bcd8db603/i-img1200x900-1718952944de062m57446.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/j1141504663","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"ブランドレディース","product_id":"o1237015822","seller_id":"DKPYJ8TN8fWYhiNwygbCghk9oXseH","title":"VUITTON LOUIS 半袖Tシャツ ルイヴィトン 黒 総柄","price":8800,"bids":1,"remaining_time":"8分 21秒","postage":750.0,"postage_text":"＋送料750円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0207/user/aa783503a812487e1c51c73c56dadebda33f8b177a9620756dca42acb97bc7d9/i-img900x1200-17839951166064e8stem16455.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/o1237015822","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"ブランドレディース","product_id":"k1225420235","seller_id":"Crzz4t5DUQ3U8oGTfsaF7pFeK586W","title":"THREE DOTS★ヨンアちゃん着用2025SS新品未使用コットンローンタックドレスXS♪","price":8900,"bids":1,"remaining_time":"3時間","postage":600.0,"postage_text":"＋送料600円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0204/user/a3cd78b8e96ddad21ac5845641592c21fb27629bbdc5438aee81fcf919eacc99/i-img679x465-1775370021726765lc29pc8.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/k1225420235","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"コート","product_id":"w1240075165","seller_id":"61xVXSxC6aYouGBXztTAEYDuZW34R","title":"christian milada・ミラノ発・ジャケット★ウール混 ソフト シンプル スパンコール カーディガン コート アウター 着せ S/34","price":1,"bids":1,"remaining_time":"6日","postage":1500.0,"postage_text":"＋送料1,500円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/2fcdc7f14e5328f7ef9d86805c704fa4838c8bc02d53e2f82116ff20464f405f/i-img1200x1200-17860869543369iurg5934.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/w1240075165","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"コート","product_id":"l1240199552","seller_id":"CLYXciXGP8ZgQb9GoxSumH8xWykg5","title":"1円～【中古美品】MISS　PARIS　レディース　ブルーフォックス　コート　サイズ11","price":1,"bids":1,"remaining_time":"7日","postage":900.0,"postage_text":"＋送料900円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/a7e58229780e5974783e84dc457822f75be63998c831337e3529f07e33e2fac2/i-img856x1200-17862639119642o80xwd34.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/l1240199552","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"ベスト","product_id":"v1240083225","seller_id":"61xVXSxC6aYouGBXztTAEYDuZW34R","title":"christian milada・ミラノ発・中綿ベスト★上質 防風 防寒 肉厚 軽量 オシャレ 無地 アウター 普段着 レディース L/38サイズ","price":1,"bids":1,"remaining_time":"6日","postage":1500.0,"postage_text":"＋送料1,500円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/2fcdc7f14e5328f7ef9d86805c704fa4838c8bc02d53e2f82116ff20464f405f/i-img1200x1200-17860872615324ebffyp146543.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/v1240083225","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"トレーナー・スウェット","product_id":"g1240042972","seller_id":"9ZXeZ2cW1qip2Vg2hRovF15wyJ9EJ","title":"GOMME mixed fabric docking zip hoodie coat Japanese label archive collection vintage 00s ゴム 異素材切替 ジップパーカー","price":1,"bids":1,"remaining_time":"5日","postage":1280.0,"postage_text":"＋送料1,280円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/f924b98f422030af87b306cbeb8a834a4e8e106ad038b51b3db3a3adf9f633c3/i-img1200x1200-17861257286232p06uzu344612.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/g1240042972","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"シャツ・ブラウス","product_id":"f1240074172","seller_id":"61xVXSxC6aYouGBXztTAEYDuZW34R","title":"上品★christian milada・ミラノ発・半袖 シャツ★薄手 ソフト 滑らか【オシャレな花柄】キレイめ 開襟 トップス デート レディース M/36","price":1,"bids":1,"remaining_time":"6日","postage":1500.0,"postage_text":"＋送料1,500円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/2fcdc7f14e5328f7ef9d86805c704fa4838c8bc02d53e2f82116ff20464f405f/i-img1200x1200-17860872225424wra5oz242931.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/f1240074172","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"スカート","product_id":"h1240166713","seller_id":"61xVXSxC6aYouGBXztTAEYDuZW34R","title":"★christian milada・ミラノ発・スカート★快適 裏地付き スパンコール キラキラ ロング丈 エレガント デート レディース M/36","price":1,"bids":1,"remaining_time":"7日","postage":1500.0,"postage_text":"＋送料1,500円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/2fcdc7f14e5328f7ef9d86805c704fa4838c8bc02d53e2f82116ff20464f405f/i-img1200x1200-17860868695171rhnc7s99560.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/h1240166713","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"パンツ・スラックス","product_id":"c1240172462","seller_id":"61xVXSxC6aYouGBXztTAEYDuZW34R","title":"★christian milada・ミラノ発・デニムパンツ★上質 ゆったり 総柄 ヒョウ柄 個性 チノパン ジーンズ イージーパンツ 街着 L/48","price":1,"bids":1,"remaining_time":"7日","postage":1500.0,"postage_text":"＋送料1,500円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/2fcdc7f14e5328f7ef9d86805c704fa4838c8bc02d53e2f82116ff20464f405f/i-img1200x1200-17860869261432iwhp3w117047.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/c1240172462","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"フォーマル","product_id":"d1240007682","seller_id":"DuKXbnSZXvstteToYFNmqKXeD4zxQ","title":"【ネコポス可】ロングワンピース M グレイ系 パーティードレス カラードレス 発表会 イベント　中古２８０８７","price":1,"bids":1,"remaining_time":"4時間","postage":null,"postage_text":"送料未定","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/980f5ea2f78de236691f5420206e8aa8506671f5d62e5192e941bdea485d0cc7/i-img1200x1200-17860990895641axfvbt77147.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/d1240007682","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"フォーマル","product_id":"g1240004150","seller_id":"DuKXbnSZXvstteToYFNmqKXeD4zxQ","title":"【ネコポス可】 L . R ワンピース 9AR 青緑系 カラードレス キャバドレ 発表会 イベント　中古２８１０２","price":1,"bids":1,"remaining_time":"4時間","postage":null,"postage_text":"送料未定","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/980f5ea2f78de236691f5420206e8aa8506671f5d62e5192e941bdea485d0cc7/i-img1200x1200-17860989144764mvow9h3156.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/g1240004150","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"フォーマル","product_id":"p1239988370","seller_id":"DuKXbnSZXvstteToYFNmqKXeD4zxQ","title":"【ネコポス可】 Pour Vous 長袖ワンピース S ネイビー系 カラードレス キャバドレ 発表会 イベント　中古２８０７１","price":1,"bids":1,"remaining_time":"4時間","postage":null,"postage_text":"送料未定","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/980f5ea2f78de236691f5420206e8aa8506671f5d62e5192e941bdea485d0cc7/i-img1200x1200-17860848678139jmwjqx681.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/p1239988370","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"フォーマル","product_id":"w1239999562","seller_id":"DuKXbnSZXvstteToYFNmqKXeD4zxQ","title":"【ネコポス可】 GRACE CONTINENTAL ワンピース 36 白茶系 カラードレス キャバドレ 発表会 イベント　中古２８０９７","price":1,"bids":1,"remaining_time":"4時間","postage":null,"postage_text":"送料未定","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/980f5ea2f78de236691f5420206e8aa8506671f5d62e5192e941bdea485d0cc7/i-img1200x1200-178609915314379rmpsu32662.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/w1239999562","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"フォーマル","product_id":"b1240184262","seller_id":"DuKXbnSZXvstteToYFNmqKXeD4zxQ","title":"1円 社交ダンスドレス salo salo 赤系 ダンス衣装ドレス カラードレス 　発表会　舞台衣装 イベント　中古２８２５１","price":1,"bids":1,"remaining_time":"3日","postage":null,"postage_text":"送料未定","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/980f5ea2f78de236691f5420206e8aa8506671f5d62e5192e941bdea485d0cc7/i-img1200x1200-17862648112411ckyp4s35.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/b1240184262","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"パンツ・スラックス","product_id":"1239532588","seller_id":"2TRr7M9RBCemov4rQvCLLFVA5oAtd","title":"1265［ワイドクロップドパンツ］新品 未使用 フリー ゼブラ","price":100,"bids":1,"remaining_time":"5時間","postage":230.0,"postage_text":"＋送料230円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/0296dab057965df44f1525a5b0e9bb990fb01a337b48aba86cddc295ebb3e12e/i-img500x600-1785805363557904qw36ci31.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/1239532588","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"ワンピース","product_id":"l1239867455","seller_id":"32rqs4uEpmfFZnvu4vo79betuxXbh","title":"nongntine 大きいサイズ 切替 ボーダー フライフロント ポケット ギャザー シャツカラー コットン 半袖 フレア ロング シャツ ワンピース M","price":300,"bids":1,"remaining_time":"1日","postage":230.0,"postage_text":"＋送料230円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/81de119eb0ba1c287647a3346e167f9bcaaac154ab4a11f4f4579515f269db34/i-img1200x1200-17859963405451ln5icu63629.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/l1239867455","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"パンツ・スラックス","product_id":"q1222380339","seller_id":"F1wZa25pPSWCnj3kWT7yfx1FG8vM5","title":"■J-50■Dickies　カラーパンツ　サイズ13","price":300,"bids":1,"remaining_time":"1日","postage":900.0,"postage_text":"＋送料900円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0203/user/d517cd2161cf3a5a1763cee06cc7c7d2f21d38c727c9d812d0974e8958a35156/i-img900x1200-17731048242380qvyhdt416.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/q1222380339","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"パンツ・スラックス","product_id":"v1222776720","seller_id":"F1wZa25pPSWCnj3kWT7yfx1FG8vM5","title":"■K-100■LALONG CLASSIC　デニムパンツ　サイズＬ","price":300,"bids":1,"remaining_time":"1日","postage":900.0,"postage_text":"＋送料900円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0203/user/d517cd2161cf3a5a1763cee06cc7c7d2f21d38c727c9d812d0974e8958a35156/i-img900x1200-17733691796736tic9pa37148.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/v1222776720","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"シャツ・ブラウス","product_id":"u1206618473","seller_id":"DjMxMSokit2morK6ZUjiUN5Dvn8Dw","title":"レディース やや厚手 ブラウス チュニック シャツ レンガ","price":487,"bids":1,"remaining_time":"3時間","postage":null,"postage_text":"送料は商品ページ参照","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0111/user/6acbfb21a04c4c8ec7aa68092d613709ed36f7a16c37523d0e351ee2048388ba/i-img450x600-176227264514359bqyhs163141.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/u1206618473","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"パンツ・スラックス","product_id":"k1206606515","seller_id":"DjMxMSokit2morK6ZUjiUN5Dvn8Dw","title":"agns b. LOLITA レディース ストライプ 薄手 イージーテーパードパンツ 黒","price":487,"bids":1,"remaining_time":"3時間","postage":null,"postage_text":"送料は商品ページ参照","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0111/user/6acbfb21a04c4c8ec7aa68092d613709ed36f7a16c37523d0e351ee2048388ba/i-img600x450-17622725604631lct4dd26279.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/k1206606515","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"ワンピース","product_id":"v1239179712","seller_id":"9akAj3856aKFgz9N39xDawsPNMw6x","title":"L60975【RANG MUSEE】 モード トロピカル アート デザイン ワンピース 新品 タグ付き","price":490,"bids":1,"remaining_time":"33分 42秒","postage":null,"postage_text":"送料未定","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0207/user/7fe522a5a43cc1b267fb30bfc4521309eef65addd53470b91d9c81771b2d48bc/i-img900x1200-17855043055744mkj0az36.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/v1239179712","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"シャツ・ブラウス","product_id":"e1239069373","seller_id":"BbVknrPR1gSJfAdbKxK88XQWHTarx","title":"■Ｄｉｓｃｏａｔリボンブラウス 大きいサイズ","price":500,"bids":1,"remaining_time":"4時間","postage":450.0,"postage_text":"＋送料450円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0207/user/0ecee9c1a32c3d708674ec1124f0f4b1a7c0b9d12e9164feb8e38a7d4f5b1419/i-img480x640-178545186222744bndwe35.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/e1239069373","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"シャツ・ブラウス","product_id":"s1237805021","seller_id":"6jtAWdN5HHFpHRyXCoJXEKVEsQVKd","title":"【アトリエトレビ Be-In Trevi 長袖ロングシルクシャツJ】ワイルドシルク 絹100％ ブラウス 貝釦 袖口折返し 赤坂ビーイン 日本製 古着","price":500,"bids":1,"remaining_time":"3時間","postage":null,"postage_text":"送料未定","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0207/user/63b085d143e9489bf48e9696e000b3239719ca6255caafb4e3d6c32a34d756d9/i-img1192x1200-17845547947697rore5i13347.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/s1237805021","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"ジャケット","product_id":"1238703373","seller_id":"CNuN7JVakcUzFmM9CXCyQSLTn7uoB","title":"売切り フォーマル 衣装 4298 SHIZUKA KOMURO ジャケット 上着 ブラック 黒 白 ホワイト レース 長袖 チェック 花柄 演奏会 発表会 式典","price":590,"bids":1,"remaining_time":"3時間","postage":230.0,"postage_text":"＋送料230円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0207/user/90169820ba787142989b210698836c44b84189017d7b9b8b02d52a7946063dd8/i-img1200x1200-17852023889278b7algx1059.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/1238703373","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"フォーマル","product_id":"w1240071835","seller_id":"CNuN7JVakcUzFmM9CXCyQSLTn7uoB","title":"売切り フォーマル 衣装 ドレス ワンピース ブルー系 ノースリーブ カラードレス 発表会 二次会 演奏会 パーティードレス セレモニー","price":690,"bids":1,"remaining_time":"4日","postage":230.0,"postage_text":"＋送料230円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/90169820ba787142989b210698836c44b84189017d7b9b8b02d52a7946063dd8/i-img1200x1200-17861588032753xry40534.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/w1240071835","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"トレーナー・スウェット","product_id":"n1208983542","seller_id":"FnwSP1TLHGvxrUcLLnLDzef6xcCdG","title":"希少 古着 YouTube ユーチューブ パーカー プルオーバー ロゴプリント 企業系 レディース Sサイズ表記 1816","price":900,"bids":1,"remaining_time":"4時間","postage":230.0,"postage_text":"＋送料230円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0111/user/4ee63f62406b8d799798ac41b07f534880720b53ca6cf7e34e9496086beae11a/i-img887x1003-17639426593944tendxx940.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/n1208983542","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"ワンピース","product_id":"p1036543931","seller_id":"GWJ6zXX4x4pFMa61AyiZzCNz74Ybv","title":"PREFERENCE PARTY'S　プリファレンスパーティーズ ドレス ワンピース レースアップ サイズ38 日本製　ブルー","price":1000,"bids":1,"remaining_time":"3時間","postage":null,"postage_text":"送料未定","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0302/users/5cf5a514b6b4adbb00e13bb11d5947908f507693/i-img900x1200-1644382795vajg8l101767.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/p1036543931","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"ワンピース","product_id":"v1239542360","seller_id":"BKR7X2UA7zkyL5atLFo9Sk2F8AFC4","title":"Pinky＆Dianne　渋水色★斜めタック～ワンピース","price":1000,"bids":1,"remaining_time":"2日","postage":null,"postage_text":"送料未定","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/4358b33304981f745c7b21b036a284bb6efcc7b6a0c48ddd1dac8fbf7ade7c5c/i-img480x640-1785800955297828yiag53547.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/v1239542360","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"ニット","product_id":"x1240008517","seller_id":"6hmc3nH5hdcwcxSzDH4gftM4VLwwK","title":"◆ブラーミン　BRAHMIN　　洗えるドルマンニット　美品◆","price":1000,"bids":1,"remaining_time":"5時間","postage":430.0,"postage_text":"＋送料430円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/3f448209b5796ec4c92c259ddf1514ba42f52ceb1d82287ff89678638cf7a98e/i-img640x480-178611537115890d9sh234.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/x1240008517","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"ベスト","product_id":"n1240183363","seller_id":"DGB4pqZtfmffXaYK9BjEYSZFY3Szm","title":"【MOYURU】モユル　萠　綿ニット　ベスト　黒　 透かし編み","price":1000,"bids":1,"remaining_time":"2日","postage":230.0,"postage_text":"＋送料230円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/f5d7fab35ffc69a3650d7cf5d899998decd329594b33ec164b85a91026b3beff/i-img900x1200-178625802320908x9k7s26.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/n1240183363","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"カットソー","product_id":"v1238514572","seller_id":"GAE8p9vm8DnNvBvSLnxJKEmVCvBo2","title":"☆SUPER BEAUTY　スーパービューティー　ビーズ&ラインストーン付きカットソー　白☆","price":1000,"bids":1,"remaining_time":"5時間","postage":null,"postage_text":"送料未定","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0207/user/93dea7c3d9e0c961bbbaf261980be307a08f98e30803afea4335ac8b8defaf65/i-img629x531-17850529688063nlfqqd9528.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/v1238514572","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"チュニック","product_id":"x1240172318","seller_id":"9Vfv7f5yQP3paKJNeYjx5SA9CvbG7","title":"20◆極美品 GoldenBear ゴールデンベア 大きいサイズ ゆったり3L〜4L 刺繍総柄 ペイズリー チュニックワンピース ブラウス バンドカラー 綿","price":1000,"bids":1,"remaining_time":"7日","postage":750.0,"postage_text":"＋送料750円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/e20e98091d992e917f7750374935a71df255651181c0e24a8dc3d9d740a81efb/i-img1200x1200-17862507848528v44v6n34.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/x1240172318","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"パンツ・スラックス","product_id":"j1239493158","seller_id":"45PW2T1wEXF2oq5YdvAzbMkKUqBuH","title":"journalstandardluxeイージーパンツ ブラック ウエストゴム テーパードパンツ 夏向きジャーナルスタンダードラックス","price":1000,"bids":1,"remaining_time":"2時間","postage":230.0,"postage_text":"＋送料230円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/7ab572fb47fe554634e787628df403935a910db303e3dd0dee7058206646287d/i-img1200x1200-17857456268052dvgk3l131686.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/j1239493158","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"スカート","product_id":"d1239754119","seller_id":"4i6L5eSoKgsECDDVZNqenVdKvi6TD","title":"日曜日終了 １０００円からスタート 愉快なスカート ８３cm　スカート 前後ウエスト内タック入 ゴムギャザー スカート Y96W","price":1100,"bids":1,"remaining_time":"4時間","postage":1100.0,"postage_text":"＋送料1,100円〜","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/191f63dd1c4506f1a181df508afe85c66b68feaa30c3474b00b8574aa7d32e0d/i-img600x600-17859209830565irvmxm183080.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/d1239754119","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"フォーマル","product_id":"r1239831397","seller_id":"EYW7mR5ED978t3m8VTQH11GwBrj8g","title":"cherry★d3383dr★ブライダル フェア★ドレスフェア★カラードレス 単品/コンサート カラオケ 演奏会 フォトウエディング【中古品】","price":1100,"bids":1,"remaining_time":"11分 23秒","postage":2000.0,"postage_text":"＋送料2,000円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/784405aacdb9be203cd17da95cf95989538bc6455c74d40109e52b2ce452ec8e/i-img680x930-17859861628068go8vzg240520.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/r1239831397","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"フォーマル","product_id":"h1239824577","seller_id":"EYW7mR5ED978t3m8VTQH11GwBrj8g","title":"cherry★d3402dr★ブライダル フェア★ドレスフェア★ビッグ カラードレス 単品/コンサート カラオケ 演奏会 フォトウエディング【中古品】","price":1100,"bids":1,"remaining_time":"38分 21秒","postage":2000.0,"postage_text":"＋送料2,000円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/784405aacdb9be203cd17da95cf95989538bc6455c74d40109e52b2ce452ec8e/i-img680x1005-17859861943563ad3pz1134882.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/h1239824577","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"フォーマル","product_id":"r1239833336","seller_id":"EYW7mR5ED978t3m8VTQH11GwBrj8g","title":"cherry★d3388dr★ブライダル フェア★ドレスフェア★ビッグ カラードレス 単品/コンサート カラオケ 演奏会 フォトウエディング【中古品】","price":1100,"bids":1,"remaining_time":"51分 49秒","postage":2000.0,"postage_text":"＋送料2,000円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/784405aacdb9be203cd17da95cf95989538bc6455c74d40109e52b2ce452ec8e/i-img680x915-17859861761828dahqo84098.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/r1239833336","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"フォーマル","product_id":"j1239710392","seller_id":"EYW7mR5ED978t3m8VTQH11GwBrj8g","title":"cherry★d1980dr★ブライダル フェア★ドレスフェア★カラードレス 単品★コンサート カラオケ 演奏会 フォトウエディング【中古品】","price":1100,"bids":1,"remaining_time":"27分 31秒","postage":2000.0,"postage_text":"＋送料2,000円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/784405aacdb9be203cd17da95cf95989538bc6455c74d40109e52b2ce452ec8e/i-img680x937-17859040180651jd3eac1145.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/j1239710392","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"フォーマル","product_id":"j1240180995","seller_id":"EYW7mR5ED978t3m8VTQH11GwBrj8g","title":"cherry★d3439dr★ブライダル フェア★ドレスフェア★カラードレス 単品★コンサート カラオケ 演奏会 フォトウエディング【中古品】","price":1100,"bids":1,"remaining_time":"4日","postage":2000.0,"postage_text":"＋送料2,000円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/784405aacdb9be203cd17da95cf95989538bc6455c74d40109e52b2ce452ec8e/i-img680x907-1786260439743488krfy2282.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/j1240180995","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"スカート","product_id":"l1239863184","seller_id":"3k2Ru3yVStwQFgYf9822UHWonkpAQ","title":"ミニ？膝上？スカート３枚","price":1200,"bids":1,"remaining_time":"4時間","postage":0.0,"postage_text":"送料無料","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/9037ad822fb4329ffe3469393d0e1161f09f132fad3928eaa8aafc046495df17/i-img900x1200-17859975333112ia4qpv279539.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/l1239863184","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"ワンピース","product_id":"d1229985695","seller_id":"8arDJzvfFUN7Q8bXtDUzwJcK4Y2Br","title":"【半袖　黒　ワンピース　サイズF⑩】レディース　SOU・SOU　綿100％　京都【C9-1①】20260515","price":1860,"bids":1,"remaining_time":"4時間","postage":null,"postage_text":"送料は商品ページ参照","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0205/user/8ac244fbfd736733a2ef6bce7f1c0775cff1c444fffe6a60e7c58b4328d53608/i-img900x1200-177881189000767cxrvr17860.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/d1229985695","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"カットソー","product_id":"v1239922787","seller_id":"51AHxzXeDXJjKCMwEnXE3qFx2kScj","title":"【美品】ギャラリービスコンティ★お花コサージュとパールが華やか♪ニット カーディガン サイズ2 アイボリー系 z22616","price":2000,"bids":1,"remaining_time":"3時間","postage":850.0,"postage_text":"＋送料850円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/2e921346ce3d8dce9169f1caad2f8ee8635a5040186936a2a8cae1224146f5dc/i-img1200x1200-17860638188649pdwiwb349740.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/v1239922787","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"チュニック","product_id":"1224026359","seller_id":"Bf1NWwwT3GnwsZpgA59uxUPhpVe9Y","title":"mn 2603 ワイシャツ チュニック トップス ゆったり フリーサイズ ナチュラル系 高質 綿100％ 可愛リスの刺繍襟 キャラメル系","price":2580,"bids":1,"remaining_time":"2時間","postage":230.0,"postage_text":"＋送料230円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0203/user/1b967525e08197a2147eb2920febefc64809afdddd11ca05110a608edaa21577/i-img600x600-17743304247211svh4p23356.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/1224026359","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"ワンピース","product_id":"1239289207","seller_id":"G5W2CFrinfS6uzwMzGeZWkhtBWKt7","title":"夢展望 ワンピース ピンク ブラックハート フリル ディアマイラブ 半袖フリルワンピ サイズL ロリータ ゴスロリ dear my love","price":2750,"bids":1,"remaining_time":"5時間","postage":230.0,"postage_text":"＋送料230円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/178d1a9e3784229246f92e60649db48e41b10d1190194433551167a0e8d087b2/i-img900x900-1785609831705481bp9pvu8.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/1239289207","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"ワンピース","product_id":"w1239324776","seller_id":"4xaUsK1wkhsHf5vhJsF41UnZNJ2qm","title":"エミプラス emi＋★大人可愛い♪リブトップス＆大判チェック柄スカート切替えロング丈ワンピース","price":2800,"bids":1,"remaining_time":"6時間","postage":230.0,"postage_text":"＋送料230円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/1681e972c14a30e3e6c22a0470d0286367b40634d60d10a6ed3cc1db5ee32717/i-img600x600-1785642766032755pgkk2f8.gif?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/w1239324776","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"シャツ・ブラウス","product_id":"p1238504332","seller_id":"GNsDRN2MFNSzQDwXE3F4GYcXqRrZD","title":"DAKS ダックス ブラウス オーバーサイズ レース 38 M レディース B72621-80","price":2980,"bids":1,"remaining_time":"5時間","postage":230.0,"postage_text":"＋送料230円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0207/user/a4ad41678ebace89d0b3a2780ae609673cc3f4b0a0279d538fd5878e2e3dfd80/i-img1200x1200-17850485594381zthu8a36376.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/p1238504332","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"フォーマル","product_id":"x1239501723","seller_id":"AYLc1PREjVpLMPPcYPtEXaZ2GqYqd","title":"aa00038-1-ｂ30 黒 3Lサイズ 【16280円】 Le fait フォーマル ワンピースアンサンブル 2点セット （ジャケット×1着、ワンピース×1着）","price":2980,"bids":1,"remaining_time":"4時間","postage":1350.0,"postage_text":"＋送料1,350円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/c95759b6e54c863a1eb1706289a07729a4a62c48aad8dae0d236c31869f2ae04/i-img640x480-17857689043086946iygw731.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/x1239501723","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"シャツ・ブラウス","product_id":"1216424826","seller_id":"9enB4XYCtKTpV7kZEVhLVLmmjAiZp","title":"POLO　ラルフローレン　フード付き長袖シャツ　Sサイズ　スキーベア　デザイン","price":3500,"bids":1,"remaining_time":"4時間","postage":185.0,"postage_text":"＋送料185円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0201/user/b31be373b634fd9150b5af76c9fd2816a248a7939160b40b4a0d7014025671a5/i-img640x480-176873772455338cwefx34.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/1216424826","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"ジャケット","product_id":"o1240097937","seller_id":"5oefHeo1jZtc5jByP9aWg3ynHwCgc","title":"MAISON KITSUNE メゾンキツネ パーカー L エクリュ CHILLAX FOX パッチ コットン ユニセックス","price":3960,"bids":1,"remaining_time":"2日","postage":840.0,"postage_text":"＋送料840円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/03f20a5b64cda3d13bf7f011fe7ac519dd721b529754ff8e8a6e5b6da17c47b5/i-img1200x1200-17861766110811ahytom26.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/o1240097937","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"ジャケット","product_id":"1239228493","seller_id":"3gWFajMf5fd8qhgxQRNc4arj6ved6","title":"ブランベール blancvert ブルゾン サイズ38 M - 白 レディース 長袖/シースルー/春/秋 ジャケット","price":5794,"bids":1,"remaining_time":"4時間","postage":680.0,"postage_text":"＋送料680円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/1fd43365f4be7af74d50e491e3a42c4a9339d5c4fe763835fe64f1c992cd5e41/i-img600x600-17855509319502s129yu34.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/1239228493","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"パンツ・スラックス","product_id":"h1191199035","seller_id":"9s4Dgcj7t1uoC3gpJ8vahW72G697C","title":"未使用 2025SS Ｔ.yamai paris / ティ ヤマイ パリ TY64-05-FP205 オーガニックサテン3タックパンツ 0 BEIGE / レディース","price":9790,"bids":1,"remaining_time":"4時間","postage":700.0,"postage_text":"＋送料700円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0107/user/06195eea23ef2359be83bb2bc75803ea662857ecd2ad87a83ebad07996bf85fc/i-img801x1200-17515218693440fzjq4b174352.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/h1191199035","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"コート","product_id":"x1239686086","seller_id":"2Kt34dTNA5nagR1Crxq4euxYgthiK","title":"【美品♪毛質良質】MINK ブラックミンク◇リアルファー 本毛皮コート(着丈約80cm) レディース 黒色 水貂皮 なめし柔らかめ","price":11000,"bids":1,"remaining_time":"4時間","postage":null,"postage_text":"送料未定","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0208/user/fb12c724488062c592019f23be4f5f06edae66836797d65be5ea4a5f3cfc1abe/i-img1200x1200-17858984626203laecyk299623.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/x1239686086","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"},{"status":"NEW","category":"コート","product_id":"w1239110076","seller_id":"EDXmPDMXdHiezQqjb86hiB3bDrkKo","title":"GRACE/グレース ミンク ブラウン系 ファーコート リアルファー 本毛皮 MINK アウター XL相当 ハーフ丈 毛並み◎なめし柔らか AA832","price":19800,"bids":1,"remaining_time":"6時間","postage":980.0,"postage_text":"＋送料980円","image_url":"https://auc-pctr.c.yimg.jp/i/auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0207/user/fa4b6e34dc72904cace43d63125a7fe99485a315b446d91c5792785f3900b4b8/i-img1200x1200-17854725215445og09dq228039.jpg?pri=l&w=300&h=300&up=0&nf_src=sy&nf_path=images/auc/pc/top/image/1.0.3/na_170x170.png&nf_st=200","url":"https://auctions.yahoo.co.jp/jp/auction/w1239110076","source_file":"新規入札商品_ヤフオク_レディース_20260809_183009.xlsx","source_datetime":"2026-08-09 18:30:09"}];
+const SOURCES = ["新規入札商品_ヤフオク_レディース_20260809_183009.xlsx"];
+const EXCLUDED_SELLERS = new Set();
+const EXCLUDE_CANDIDATE_ENDPOINT =
+  "https://script.google.com/macros/s/AKfycbxmJOKRHaUEM9VA-fCK_81vZLGokXMFd-5TQLmoUcqWrTGG_qQMuTtxzQojGeG3JJc6/exec";
+
+const ELEMENT_IDS = [
+  "q",
+  "category",
+  "minBids",
+  "shipping",
+  "sort",
+  "grid",
+  "empty",
+  "stats",
+  "sources"
+];
+
+const ELEMENTS = Object.fromEntries(
+  ELEMENT_IDS.map(id => [id, document.getElementById(id)])
+);
+
+const NO_IMAGE_DATA_URI = (
+  "data:image/svg+xml;charset=UTF-8," +
+  encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" width="600" height="600"
+         viewBox="0 0 600 600">
+      <rect width="600" height="600" fill="#f1f3f5"/>
+      <rect x="170" y="175" width="260" height="190" rx="18"
+            fill="#ffffff" stroke="#c7cdd4" stroke-width="10"/>
+      <circle cx="250" cy="245" r="34" fill="#c7cdd4"/>
+      <path d="M195 335l75-72 52 48 42-40 61 64"
+            fill="none" stroke="#c7cdd4" stroke-width="18"
+            stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="300" y="445" text-anchor="middle"
+            font-family="Arial, sans-serif" font-size="42"
+            font-weight="700" fill="#7b8490">NO IMAGE</text>
+    </svg>
+  `)
+);
+
+function handleImageError(imageElement) {
+  imageElement.onerror = null;
+  imageElement.src = NO_IMAGE_DATA_URI;
+  imageElement.classList.add("image-fallback");
+}
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(
+    /[&<>"']/g,
+    character => ({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#39;"
+    })[character]
+  );
+}
+
+async function copyTitle(buttonElement) {
+  const card = buttonElement.closest(".card");
+  const titleElement = card?.querySelector(".title");
+  const title = titleElement?.textContent.trim() || "";
+
+  if (!title) {
+    alert("コピーするタイトルがありません。");
+    return;
+  }
+
+  const originalLabel = buttonElement.textContent;
+
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(title);
+    } else {
+      const textArea = document.createElement("textarea");
+      textArea.value = title;
+      textArea.setAttribute("readonly", "");
+      textArea.style.position = "fixed";
+      textArea.style.left = "-9999px";
+      document.body.appendChild(textArea);
+      textArea.select();
+
+      const copied = document.execCommand("copy");
+      textArea.remove();
+
+      if (!copied) {
+        throw new Error("copy failed");
+      }
+    }
+
+    buttonElement.textContent = "コピー済み";
+    buttonElement.disabled = true;
+
+    setTimeout(() => {
+      buttonElement.textContent = originalLabel;
+      buttonElement.disabled = false;
+    }, 1200);
+
+  } catch (error) {
+    window.prompt("タイトルをコピーしてください", title);
+  }
+}
+
+function formatYen(value) {
+  if (
+    value === null ||
+    value === "" ||
+    Number.isNaN(Number(value))
+  ) {
+    return "価格不明";
+  }
+
+  return "¥" + Number(value).toLocaleString("ja-JP");
+}
+
+function isFreeShipping(item) {
+  const text = String(item.postage_text || "");
+
+  return (
+    Number(item.postage) === 0 ||
+    text.includes("送料無料") ||
+    text.includes("送料込み") ||
+    text.includes("出品者負担")
+  );
+}
+
+function getCategoryClass(category) {
+  return String(category).includes("ブランド")
+    ? "brand"
+    : "ladies";
+}
+
+function getPostageLabel(item) {
+  if (isFreeShipping(item)) {
+    return "送料無料";
+  }
+
+  if (item.postage !== null && item.postage !== "") {
+    return "送料 " + formatYen(item.postage);
+  }
+
+  return item.postage_text || "送料不明";
+}
+
+function getFilterState() {
+  return {
+    query: ELEMENTS.q.value.trim().toLowerCase(),
+    category: ELEMENTS.category.value,
+    minBids: Number(ELEMENTS.minBids.value || 0),
+    shipping: ELEMENTS.shipping.value,
+    sort: ELEMENTS.sort.value
+  };
+}
+
+function matchesFilters(item, filters) {
+  const sellerIsVisible =
+    !item.seller_id || !EXCLUDED_SELLERS.has(String(item.seller_id));
+
+  const titleMatches =
+    !filters.query ||
+    String(item.title || "").toLowerCase().includes(filters.query);
+
+  const categoryMatches =
+    !filters.category ||
+    item.category === filters.category;
+
+  const bidsMatch =
+    Number(item.bids || 0) >= filters.minBids;
+
+  const freeShipping = isFreeShipping(item);
+
+  const shippingMatches =
+    !filters.shipping ||
+    (filters.shipping === "free" && freeShipping) ||
+    (filters.shipping === "paid" && !freeShipping);
+
+  return (
+    sellerIsVisible &&
+    titleMatches &&
+    categoryMatches &&
+    bidsMatch &&
+    shippingMatches
+  );
+}
+
+function sortItems(items, sortType) {
+  const rows = [...items];
+
+  const sortFunctions = {
+    bidsDesc: (a, b) =>
+      Number(b.bids || 0) - Number(a.bids || 0),
+
+    priceAsc: (a, b) =>
+      (a.price ?? Infinity) - (b.price ?? Infinity),
+
+    priceDesc: (a, b) =>
+      (b.price ?? -1) - (a.price ?? -1)
+  };
+
+  const sortFunction = sortFunctions[sortType];
+
+  if (sortFunction) {
+    rows.sort(sortFunction);
+  }
+
+  return rows;
+}
+
+async function excludeSeller(buttonElement) {
+  const card = buttonElement.closest(".card");
+  const sellerId = String(card?.dataset.sellerId || "").trim();
+  const productId = String(card?.dataset.productId || "").trim();
+  const title = String(card?.dataset.title || "").trim();
+  const itemUrl = String(card?.dataset.itemUrl || "").trim();
+
+  if (!sellerId) {
+    alert("この商品には出品者IDがありません。");
+    return;
+  }
+
+  const confirmed = confirm(
+    "この出品者を除外候補へ追加しますか？\n\n" +
+    sellerId
+  );
+
+  if (!confirmed) {
+    return;
+  }
+
+  buttonElement.disabled = true;
+  buttonElement.textContent = "追加中…";
+
+  const isLocal =
+    location.hostname === "127.0.0.1" ||
+    location.hostname === "localhost";
+
+  try {
+    if (isLocal) {
+      const response = await fetch("/exclude-seller", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          seller_id: sellerId
+        })
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.ok) {
+        throw new Error(
+          result.message || "除外設定への追加に失敗しました。"
+        );
+      }
+
+      EXCLUDED_SELLERS.add(sellerId);
+      render();
+
+      alert(
+        result.already_exists
+          ? "この出品者はすでに除外リストへ登録済みです。"
+          : "PCの除外リストへ追加しました。"
+      );
+      return;
+    }
+
+    if (
+      !EXCLUDE_CANDIDATE_ENDPOINT ||
+      EXCLUDE_CANDIDATE_ENDPOINT.includes("PASTE_")
+    ) {
+      throw new Error(
+        "Google Apps ScriptのURLが設定されていません。"
+      );
+    }
+
+    await fetch(EXCLUDE_CANDIDATE_ENDPOINT, {
+      method: "POST",
+      mode: "no-cors",
+      cache: "no-store",
+      headers: {
+        "Content-Type": "text/plain;charset=UTF-8"
+      },
+      body: JSON.stringify({
+        type: "yahoo_exclude_candidate",
+        seller_id: sellerId,
+        product_id: productId,
+        title: title,
+        item_url: itemUrl,
+        source_page: location.href,
+        registered_at: new Date().toISOString()
+      }),
+      keepalive: true
+    });
+
+    EXCLUDED_SELLERS.add(sellerId);
+    render();
+
+    alert(
+      "Googleスプレッドシートの除外候補へ送信しました。"
+    );
+  } catch (error) {
+    buttonElement.disabled = false;
+    buttonElement.textContent =
+      "🚫 この出品者を今後表示しない";
+
+    alert(
+      "除外候補へ追加できませんでした。\n\n" +
+      String(error)
+    );
+  }
+}
+
+function createCardHtml(item) {
+  const freeShipping = isFreeShipping(item);
+  const categoryClass = getCategoryClass(item.category);
+
+  return `
+    <article
+      class="card"
+      data-seller-id="${escapeHtml(item.seller_id || "")}"
+      data-product-id="${escapeHtml(item.product_id || "")}"
+      data-title="${escapeHtml(item.title || "")}"
+      data-item-url="${escapeHtml(item.url || "")}"
+    >
+      <div class="image-box">
+        <img
+          src="${escapeHtml(item.image_url)}"
+          alt="${escapeHtml(item.title)}"
+          loading="lazy"
+          decoding="async"
+          onerror="handleImageError(this)"
+        >
+
+        <div class="badges">
+          <span class="badge ${categoryClass}">
+            ${escapeHtml(item.category)}
+          </span>
+
+          <span class="badge bid">
+            入札 ${Number(item.bids || 0)}件
+          </span>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="title">
+          ${escapeHtml(item.title)}
+        </div>
+
+        <button
+          class="copy-title"
+          type="button"
+          onclick="copyTitle(this)"
+        >
+          タイトルをコピー
+        </button>
+
+        <div class="price">
+          ${formatYen(item.price)}
+        </div>
+
+        <div class="info-row">
+          <span>
+            ${escapeHtml(item.remaining_time || "残り時間不明")}
+          </span>
+
+          <span>
+            ${escapeHtml(item.product_id || "")}
+          </span>
+        </div>
+
+        <div class="postage ${freeShipping ? "free" : ""}">
+          ${escapeHtml(getPostageLabel(item))}
+        </div>
+
+        <a
+          class="open"
+          href="${escapeHtml(item.url)}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          商品ページを開く
+        </a>
+
+        <button
+          class="exclude-seller"
+          type="button"
+          ${item.seller_id ? "" : "disabled"}
+          onclick="excludeSeller(this)"
+        >
+          ${item.seller_id
+            ? "🚫 この出品者を今後表示しない"
+            : "出品者IDなし"}
+        </button>
+      </div>
+    </article>
+  `;
+}
+
+function renderCards(rows) {
+  ELEMENTS.grid.innerHTML = rows
+    .map(createCardHtml)
+    .join("");
+
+  ELEMENTS.empty.style.display =
+    rows.length ? "none" : "block";
+}
+
+function renderStats(rows) {
+  const brandCount = rows.filter(
+    item => String(item.category).includes("ブランド")
+  ).length;
+
+  const ladiesCount = rows.length - brandCount;
+  const freeCount = rows.filter(isFreeShipping).length;
+
+  ELEMENTS.stats.innerHTML = `
+    <div class="stat">
+      表示件数
+      <b>${rows.length}</b>
+    </div>
+
+    <div class="stat">
+      ブランド
+      <b>${brandCount}</b>
+    </div>
+
+    <div class="stat">
+      レディース
+      <b>${ladiesCount}</b>
+    </div>
+
+    <div class="stat">
+      送料無料
+      <b>${freeCount}</b>
+    </div>
+  `;
+}
+
+function render() {
+  const filters = getFilterState();
+
+  const filteredItems = ITEMS.filter(
+    item => matchesFilters(item, filters)
+  );
+
+  const sortedItems = sortItems(
+    filteredItems,
+    filters.sort
+  );
+
+  renderCards(sortedItems);
+  renderStats(sortedItems);
+}
+
+function populateCategories() {
+  const categories = [
+    ...new Set(
+      ITEMS
+        .map(item => item.category)
+        .filter(Boolean)
+    )
+  ].sort(
+    (a, b) => a.localeCompare(b, "ja")
+  );
+
+  ELEMENTS.category.innerHTML =
+    '<option value="">全カテゴリ</option>' +
+    categories
+      .map(category => (
+        `<option value="${escapeHtml(category)}">` +
+        `${escapeHtml(category)}` +
+        "</option>"
+      ))
+      .join("");
+}
+
+function registerEventListeners() {
+  ["category", "minBids", "shipping", "sort"].forEach(id => {
+    ELEMENTS[id].addEventListener("change", render);
+  });
+
+  ELEMENTS.q.addEventListener("input", render);
+}
+
+function initializePage() {
+  populateCategories();
+  registerEventListeners();
+  ELEMENTS.sources.textContent = SOURCES.join(" / ");
+  render();
+}
+
+initializePage();
+</script>
+</body>
+</html>
